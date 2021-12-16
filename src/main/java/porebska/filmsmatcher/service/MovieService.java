@@ -13,6 +13,9 @@ public class MovieService {
     private MovieRepository movieRepository;
 
     public Movie addMovie(Movie movie){
+        if (movieRepository.existsById(movie.getMovieId())){
+            return null;
+        }
         return movieRepository.save(movie);
     }
 
