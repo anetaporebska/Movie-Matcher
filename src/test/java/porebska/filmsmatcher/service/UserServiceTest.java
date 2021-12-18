@@ -14,9 +14,11 @@ class UserServiceTest {
     @Test
     void addUser() {
         User user1 = User.builder()
-                .name("test")
-                .login("test1")
+                .name("test4")
+                .login("test4")
                 .password("test-passwd")
+                .roles("ADMIN")
+                .active(true)
                 .build();
         userService.addUser(user1);
     }
