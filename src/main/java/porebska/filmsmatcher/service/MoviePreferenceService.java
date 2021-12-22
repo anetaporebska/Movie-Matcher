@@ -23,5 +23,4 @@ public class MoviePreferenceService {
         return moviePreferenceRepository.findByUser(user);
     }
 
-
 }

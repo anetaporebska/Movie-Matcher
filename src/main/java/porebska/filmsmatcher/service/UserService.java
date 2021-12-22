@@ -5,11 +5,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import porebska.filmsmatcher.model.Movie;
+import porebska.filmsmatcher.model.MoviePreference;
 import porebska.filmsmatcher.model.User;
 import porebska.filmsmatcher.model.UserDetailsImpl;
 import porebska.filmsmatcher.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.List;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -40,6 +44,16 @@ public class UserService implements UserDetailsService {
         Optional<User> user = userRepository.findByLogin(username);
         user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + username));
         return user.map(UserDetailsImpl::new).get();
+    }
+
+    public void addMoviesWithoutPreferencesForUser(User user, List<Movie> movieList, List<MoviePreference> moviePreferenceList){
+        for(Movie movie: movieList){ // TODO limit this list - do not add the whole db
+            Optional<MoviePreference> moviePreference = moviePreferenceList.stream().filter(x -> x.getMovie().getMovieId().equals(movie.getMovieId())).findFirst();
+            if (moviePreference.isEmpty()){
+                user.setSelectedMovie(movie);
+                return;
+            }
+        }
     }
 
 }

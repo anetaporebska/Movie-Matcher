@@ -17,9 +17,6 @@ public class MovieService {
     @Autowired
     private MoviePreferenceService moviePreferenceService;
 
-    @Autowired
-    private UserService userService;
-
     public Movie addMovie(Movie movie){
         if (movieRepository.existsById(movie.getMovieId())){
             return null;
@@ -37,12 +34,5 @@ public class MovieService {
 
     public List<Movie> getAllMoviesByCategory(String category){
         return null; // TODO
-    }
-
-
-    public Movie getRandomMovie(String login) {
-        User user = userService.getUserByLogin(login);
-        System.out.println(moviePreferenceService.getUserMoviePreferences(user));
-        return null;
     }
 }
