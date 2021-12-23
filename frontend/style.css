@@ -1,0 +1,65 @@
+*{
+    box-sizing: border-box;
+    margin: 1rem;
+    padding: 0;
+    font-size: 130%;
+    background-color: rgb(13, 21, 24);
+}
+
+body {
+    background-color: rgb(13, 21, 24);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+
+#logout-btn{
+    float: right;
+}
+
+#movie-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+#movie {
+    background-color: rgb(12, 21, 34);
+    text-align: center;
+    font-size: medium;
+    color: rgb(199, 249, 255);
+}
+
+ul {
+    list-style-type: none;
+    font-size: medium;
+    text-align: center;
+    color: rgb(199, 249, 255);
+  }
+h2 {
+    text-align: center;
+    color: rgb(199, 249, 255);
+}
+
+#preference-btns{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group{
+    font-size: small;
+    color: rgb(199, 249, 255);
+}
+
+#login-btn{
+    display: flex;
+    flex-direction: column;
+}
+
+#matching-movies{
+    background-color: rgb(12, 21, 34);
+}

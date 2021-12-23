@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale=1.0>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../style.css">
+        <title>Home page</title>
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="../index.html" class="btn btn-light">Main page</a>
+        </nav>
+        <div class="container">
+            <h2>Matching movies for you and your friend</h2>
+            <div class="form-group">
+                <label for="user"><b>Username</b></label>
+                <input type="text" class="form-control" placeholder="Enter Username" name="user" id="user" required>      
+            </div>
+            <button onClick="matchingMovies()" class="btn btn-primary">Get matching movies</button>
+            <div id="matching-movies">
+               
+            </div>
+            
+        </div>
+        <script type="text/javascript" src="js/matches.js"></script>
+    </body>
+</html>

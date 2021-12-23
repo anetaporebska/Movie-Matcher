@@ -26,7 +26,7 @@ function login(){
         if (result.accessToken){
             localStorage.setItem("user", JSON.stringify(result));
         }
-        location.href = "data.html"; // TODO if successful
+        location.href = "http://127.0.0.1:5500/data/data.html"; // TODO if successful
         return result;
     });
 }

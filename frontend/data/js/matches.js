@@ -22,11 +22,11 @@ function matchingMovies(){
     }
     const user = document.getElementById("user").value;
     fetch(MOVIE_URL + "/" + user, options).then(response => response.json()).then(result => {
-        var resultText = "<ul>"
+        var resultText = "<div id=\"movie-result\"> <ul>"
         for(var i=0; i<result.length; i++){
             resultText += ("<li>" + result[i].title +  "</li>");
         }
-        resultText += "</ul>";
+        resultText += "</ul> </div>";
         document.getElementById("matching-movies").innerHTML = resultText;
     });
 }

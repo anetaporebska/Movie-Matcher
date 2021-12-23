@@ -3,18 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width", initial-scale=1.0>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
         <title>Home page</title>
     </head>
     <body>
         <div class="container">
-            <div id="home" class="flex-column flex-center">
-                <a href="/login.html" class="btn">Login</a>
-                <a href="/register.html" class="btn">Register</a>
-                <a href="/data.html" class="btn">Find movies</a>
-                <a href="/matches.html" class="btn">Find matching users / movies</a>
-                <button onClick="logout()">Logout</button>
+            <nav class="navbar">
+                <a href="auth/login.html" class="btn btn-primary">Login</a>
+                <a href="auth/register.html" class="btn btn-primary">Register</a>
+                <button onClick="logout()" id="logout-btn" class="btn btn-primary">Logout</button>
+            </nav>
+            <div id="movie-btns">
+                <a href="data/data.html" class="btn btn-info">Explore movies</a>
+                <a href="data/matches.html" class="btn btn-info">Find matching movies</a> 
             </div>
         </div>
-        <script type="text/javascript" src="auth_service.js"></script>
+        <script type="text/javascript" src="auth/js/auth_service.js"></script>
     </body>
 </html>
