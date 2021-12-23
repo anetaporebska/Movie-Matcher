@@ -11,9 +11,8 @@ import porebska.filmsmatcher.model.User;
 import porebska.filmsmatcher.model.UserDetailsImpl;
 import porebska.filmsmatcher.repository.UserRepository;
 
-import java.util.ArrayList;
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -46,14 +45,13 @@ public class UserService implements UserDetailsService {
         return user.map(UserDetailsImpl::new).get();
     }
 
-    public void addMoviesWithoutPreferencesForUser(User user, List<Movie> movieList, List<MoviePreference> moviePreferenceList){
-        for(Movie movie: movieList){ // TODO limit this list - do not add the whole db
+    public void addMoviesWithoutPreferencesForUser(User user, List<Movie> movieList, List<MoviePreference> moviePreferenceList) {
+        for (Movie movie : movieList) {
             Optional<MoviePreference> moviePreference = moviePreferenceList.stream().filter(x -> x.getMovie().getMovieId().equals(movie.getMovieId())).findFirst();
-            if (moviePreference.isEmpty()){
+            if (moviePreference.isEmpty()) {
                 user.setSelectedMovie(movie);
                 return;
             }
         }
     }
-
 }

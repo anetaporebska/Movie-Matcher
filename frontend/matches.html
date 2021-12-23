@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale=1.0>
+        <title>Home page</title>
+    </head>
+    <body>
+        <h1>Matching movies for you and your friend</h1>
+        <div class="container">
+            <div id="home" class="flex-column flex-center">
+                <a href="/index.html" class="btn">Main page</a>
+                <a href="/data.html" class="btn">Find movies</a>
+            </div>
+            <div class="login_form">
+                <label for="user"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="user" id="user" required>
+                <button onClick="matchingMovies()">Get matching movies</button>
+            </div>
+            <div id="matching-movies">
+            </div>
+        </div>
+        <script type="text/javascript" src="matches.js"></script>
+    </body>
+</html>

@@ -34,15 +34,9 @@ public class MovieController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/movie/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<Movie> getMovieById(@PathVariable Long id){
-        return ResponseEntity.ok(movieService.getMovieById(id));
-    }
-
     @GetMapping("/movie")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<Movie> getRandomMovie(){
+    public ResponseEntity<Movie> getRandomMovie() {
         User user = getCurrentUser();
         List<MoviePreference> moviePreferenceList = moviePreferenceService.getUserMoviePreferences(user);
         List<Movie> movieList = movieService.getAllMovies();
@@ -53,7 +47,7 @@ public class MovieController {
 
     @PostMapping("/movie/{id}/{p}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<?> addPreference(@PathVariable Long id, @PathVariable int p){
+    public ResponseEntity<?> addPreference(@PathVariable Long id, @PathVariable int p) {
         User user = getCurrentUser();
         MoviePreference moviePreference = MoviePreference.builder()
                 .movie(movieService.getMovieById(id))
@@ -65,7 +59,17 @@ public class MovieController {
         return ResponseEntity.ok(new MessageResponse("Preference added"));
     }
 
-    private User getCurrentUser(){
+    @GetMapping("/movie/{user}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<?> getMatchingMovies(@PathVariable String user) {
+        User currentUser = getCurrentUser();
+        User requestedUser = userService.getUserByLogin(user);
+        List<Movie> commonMovieList = moviePreferenceService.getCommonMovies(currentUser, requestedUser);
+        return ResponseEntity.ok(commonMovieList);
+    }
+
+
+    private User getCurrentUser() {
         String currentUserName = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
@@ -73,11 +77,4 @@ public class MovieController {
         }
         return userService.getUserByLogin(currentUserName);
     }
-
-    // TODO getMatchingMoviesForUserWithLogin
-
-    // TODO getRandomMovieWithNoPreference
-
-    // TODO getAllMyPreferences
-
 }
