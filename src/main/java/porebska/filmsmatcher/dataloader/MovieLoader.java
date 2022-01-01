@@ -16,6 +16,7 @@ import java.util.Optional;
 
 @Component
 public class MovieLoader extends DataLoader {
+
     private final String getUrl = "https://api.themoviedb.org/3/movie/popular?api_key=97c23dc2af1e261a3024c0bb5b4f3060&language=en-US&page=1";
 
     @Autowired
@@ -30,7 +31,7 @@ public class MovieLoader extends DataLoader {
             String response = loadData(getUrl);
             parseResponse(response);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.warn("Could not load movie data!");
         }
     }
 

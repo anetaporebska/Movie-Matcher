@@ -1,6 +1,5 @@
 package porebska.filmsmatcher.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -49,5 +48,4 @@ public class Movie {
         if (genres == null) genres = new ArrayList<>();
         genres.add(genre);
     }
-
 }

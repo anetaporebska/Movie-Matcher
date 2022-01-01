@@ -26,7 +26,7 @@ function login(){
         if (result.accessToken){
             localStorage.setItem("user", JSON.stringify(result));
         }
-        location.href = "http://127.0.0.1:5500/data/data.html"; // TODO if successful
+        location.href = "http://127.0.0.1:5500/data/data.html";
         return result;
     });
 }
@@ -41,7 +41,7 @@ function register(){
     const options = getOptions();
     fetch(AUTH_URL + "signup", options).then(response => response.json()).then(result => {
         console.log(result);
-        location.href = "login.html"; // TODO if successful
+        location.href = "login.html";
         return result;
     });
 }

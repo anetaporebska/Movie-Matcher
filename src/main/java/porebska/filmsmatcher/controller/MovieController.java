@@ -1,5 +1,7 @@
 package porebska.filmsmatcher.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,7 +25,7 @@ import java.util.List;
 @RequestMapping("/api/")
 public class MovieController {
 
-    // TODO add logger
+    private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
 
     @Autowired
     private MovieService movieService;
@@ -42,6 +44,7 @@ public class MovieController {
         List<Movie> movieList = movieService.getAllMovies();
         userService.addMoviesWithoutPreferencesForUser(user, movieList, moviePreferenceList);
         Movie movie = user.getSelectedMovie();
+        logger.info("Found movie " + movie.getTitle() + " for user " + user.getLogin());
         return ResponseEntity.ok(movie);
     }
 
@@ -54,8 +57,8 @@ public class MovieController {
                 .user(user)
                 .status(Status.intToStatus(p))
                 .build();
-        System.out.println(moviePreference);
         moviePreferenceService.addMoviePreference(moviePreference);
+        logger.info("Added movie preference for user " + user.getLogin());
         return ResponseEntity.ok(new MessageResponse("Preference added"));
     }
 
@@ -65,9 +68,9 @@ public class MovieController {
         User currentUser = getCurrentUser();
         User requestedUser = userService.getUserByLogin(user);
         List<Movie> commonMovieList = moviePreferenceService.getCommonMovies(currentUser, requestedUser);
+        logger.info("Found matching movies for users " + currentUser.getLogin() + " and " + requestedUser.getLogin());
         return ResponseEntity.ok(commonMovieList);
     }
-
 
     private User getCurrentUser() {
         String currentUserName = null;

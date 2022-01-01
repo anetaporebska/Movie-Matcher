@@ -5,8 +5,8 @@ public enum Status {
     WANT_TO_WATCH,
     DO_NOT_WANT_TO_WATCH;
 
-    public static Status intToStatus(int p){
-        switch (p){
+    public static Status intToStatus(int p) {
+        switch (p) {
             case 0:
                 return SEEN;
             case 1:

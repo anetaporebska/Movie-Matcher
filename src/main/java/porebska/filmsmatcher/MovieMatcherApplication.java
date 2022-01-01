@@ -11,8 +11,8 @@ import porebska.filmsmatcher.repository.UserRepository;
 @EnableJpaRepositories(basePackageClasses = UserRepository.class)
 public class MovieMatcherApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MovieMatcherApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MovieMatcherApplication.class, args);
+    }
 
 }

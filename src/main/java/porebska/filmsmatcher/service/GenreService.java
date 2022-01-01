@@ -21,13 +21,11 @@ public class GenreService {
         return genreRepository.save(genre);
     }
 
-    public Optional<Genre> getGenreById(Long id){
+    public Optional<Genre> getGenreById(Long id) {
         return genreRepository.findById(id);
     }
 
     public List<Genre> getAllGenres() {
         return genreRepository.findAll();
     }
-
-
 }

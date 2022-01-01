@@ -23,7 +23,7 @@ public class GenreLoader extends DataLoader {
             String response = loadData(getUrl);
             parseResponse(response);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.warn("Could not load genre data!");
         }
     }
 

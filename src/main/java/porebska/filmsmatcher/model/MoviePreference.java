@@ -43,5 +43,4 @@ public class MoviePreference {
 
     @Column(name = "status")
     private Status status;
-
 }
