@@ -11,14 +11,15 @@ to provide with secure access to this data.
 
 Main page:
 
-
+![main_page](./images/main_page.png)
 
 Preferences page:
 
+![preferences](./images/preferences.png)
 
 Matching movies page:
 
-
+![matching_movies](./images/matching.png)
 
 ## Technologies
 
